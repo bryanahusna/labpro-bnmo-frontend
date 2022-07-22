@@ -1,0 +1,2 @@
+# labpro-bnmo-frontend
+ 
