@@ -48,7 +48,8 @@ class Register extends Component {
         });
         if(res.status == 200){
             const parsedRes = await res.json();
-            alert('Registration Successful!');
+            //alert('Registration Successful!');
+            window.open('/registration-successful', '_self');
         } else{
             alert(await res.text());
         }

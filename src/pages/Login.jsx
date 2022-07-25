@@ -36,11 +36,12 @@ class Login extends Component {
                 'Content-Type': 'application/json'
                 // 'Content-Type': 'application/x-www-form-urlencoded',
             },
+            credentials: 'include',
             body: JSON.stringify(this.state)
         });
         if(res.status == 200){
             const parsedRes = await res.text();
-            alert(`Login successful\nJWT: ${parsedRes}`);
+            alert(`Login successful\n: ${parsedRes}`);
         } else{
             alert(await res.text());
         }
