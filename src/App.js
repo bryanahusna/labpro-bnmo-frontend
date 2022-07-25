@@ -13,6 +13,7 @@ import Deposit from './pages/Deposit';
 import Withdraw from './pages/Withdraw';
 import Transfer from './pages/Transfer';
 import History from './pages/History';
+import Logout from './pages/Logout';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path='withdraw' element={ <Withdraw /> } />
           <Route path='transfer' element={ <Transfer /> } />
           <Route path='history' element={ <History /> } />
+          <Route path='logout' element={ <Logout /> } />
         </Route>
       </Routes>
     </BrowserRouter>

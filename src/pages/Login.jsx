@@ -42,6 +42,7 @@ class Login extends Component {
         if(res.status == 200){
             const parsedRes = await res.text();
             alert(`Login successful\n: ${parsedRes}`);
+            window.open('/dashboard', '_self');
         } else{
             alert(await res.text());
         }

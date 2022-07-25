@@ -1,9 +1,20 @@
 import { Link } from 'react-router-dom';
 import React, { Component } from 'react';
+import checkLoggedIn from '../etc/checkLoggedIn';
 
 class Dashboard extends Component {
     state = {  } 
-    render() { 
+
+    async componentDidMount(){
+        const user = await checkLoggedIn();
+        this.setState({ ...user });
+    }
+
+    render() {
+        if(!this.state.username){
+            return <h1>Please wait...</h1>;
+        }
+        
         return (
             <React.Fragment>
                 <Link to='/deposit'>Deposit</Link><br />
