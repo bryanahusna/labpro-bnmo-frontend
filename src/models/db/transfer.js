@@ -2,9 +2,9 @@ import Transaction from "./transaction";
 import User from "./user";
 
 export default class Transfer {
-    transaction!: Transaction;
+    transaction;
 
-    transactionId!: number;
+    transactionId;
 
-    to_user!: User;    
+    to_user;
 }
