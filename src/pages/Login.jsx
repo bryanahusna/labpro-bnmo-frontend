@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import checkLoggedIn from '../etc/checkLoggedIn';
 
 class Login extends Component {
     state = {
@@ -41,6 +42,10 @@ class Login extends Component {
         });
         if(res.status == 200){
             const parsedRes = await res.text();
+
+            const user = await checkLoggedIn();
+            localStorage.setItem('me', JSON.stringify(user));
+            
             alert(`Login successful\n: ${parsedRes}`);
             window.open('/dashboard', '_self');
         } else{

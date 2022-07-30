@@ -1,6 +1,8 @@
+import React, { Component } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 
-const Layout = () => {
+class Layout extends Component {
+  render(){
     return (
       <>
         <nav>
@@ -21,14 +23,18 @@ const Layout = () => {
               <Link to="/approve">Approve</Link>
             </li>
             <li>
+              <Link to="/verify">Verify</Link>
+            </li>
+            <li>
               <Link to="/logout">Logout</Link>
             </li>
           </ul>
         </nav>
-  
+        
         <Outlet />
       </>
     )
-  };
+  }
+};
   
-  export default Layout;
+export default Layout;

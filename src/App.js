@@ -15,6 +15,7 @@ import Transfer from './pages/Transfer';
 import History from './pages/History';
 import Logout from './pages/Logout';
 import Approve from './pages/Approve';
+import Verify from './pages/Verify';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path='deposit' element={ <Deposit /> } />
           <Route path='withdraw' element={ <Withdraw /> } />
           <Route path='approve' element={ <Approve /> } />
+          <Route path='verify' element={ <Verify /> } />
           <Route path='transfer' element={ <Transfer /> } />
           <Route path='history' element={ <History /> } />
           <Route path='logout' element={ <Logout /> } />
