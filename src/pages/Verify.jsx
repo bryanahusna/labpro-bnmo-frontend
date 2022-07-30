@@ -8,15 +8,8 @@ class Verify extends Component {
     }
 
     async componentDidMount(){
-        try{
-            const user = JSON.parse(localStorage.getItem('me'));
-            this.setState({ ...user });
-        } catch(err){}
-
-        if(!this.state.username){
-            const user = await checkLoggedIn();
-            this.setState({ ...user });
-        }
+        const user = await checkLoggedIn();
+        this.setState({ ...user });
 
         if(!this.state.is_admin) return;
 
@@ -28,12 +21,9 @@ class Verify extends Component {
     }
 
     render() {
-        if(!this.state.username){
-            return <h1>Please wait...</h1>
-        }
-        if(!this.state.is_admin){
-            return <h1>Only accessible to admin</h1>
-        }
+        if(!this.state.username) return <h1>Please wait...</h1>
+
+        if(!this.state.is_admin) return <h1>Only accessible to admin</h1>
 
         return (
             <React.Fragment>

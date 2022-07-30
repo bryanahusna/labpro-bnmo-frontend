@@ -7,7 +7,7 @@ class Deposit extends Component {
         amount: 0,
         currency: 'IDR',
         rate: 1,
-        submitting: false
+        is_submitting: false
     };
     
     async componentDidMount(){
@@ -37,7 +37,7 @@ class Deposit extends Component {
                         onAmountChanged = { (e) => this.setState({ amount: e.target.value }) }
                         onCurrencyChanged = { (e) => this.setState({ currency: e.target.value }) }
                     />
-                    <button disabled = { this.state.submitting } type='submit'>Submit</button>
+                    <button disabled = { this.state.is_submitting } type='submit'>Submit</button>
                 </form>
             </React.Fragment>
         );
@@ -45,8 +45,9 @@ class Deposit extends Component {
 
     submitHandler = async (e) => {
         e.preventDefault();
-        if(this.state.submitting) return;
-        this.setState({ submitting: true });
+        
+        if(this.state.is_submitting) return;
+        this.setState({ is_submitting: true });
 
         const resRate = await fetch(`http://localhost:3001/api/ext/currency/rate?from=${this.state.currency}`, { credentials: 'include' });
         if(resRate.status != 200){
@@ -74,7 +75,7 @@ class Deposit extends Component {
             }
         }
 
-        this.setState({ submitting: false });
+        this.setState({ is_submitting: false });
     }
     
     updateRate = async () => {
