@@ -7,7 +7,8 @@ class Deposit extends Component {
         amount: 0,
         currency: 'IDR',
         rate: 1,
-        is_submitting: false
+        is_submitting: false,
+        submit_success: null
     };
     
     async componentDidMount(){
@@ -27,19 +28,30 @@ class Deposit extends Component {
         }
 
         return (
-            <React.Fragment>
-                <h1>Deposit</h1>
+            <div className='container'>
+                <h1 className='mb-3'>Deposit</h1>
                 <form onSubmit={ this.submitHandler }>
                     <Amount
                         amount = { this.state.amount }
                         currency = { this.state.currency }
                         rate = { this.state.rate }
-                        onAmountChanged = { (e) => this.setState({ amount: e.target.value }) }
+                        onAmountChanged = { (e) => this.setState({ amount: isNaN(parseFloat(e.target.value)) ? '' : (parseFloat(e.target.value) == 0 ? e.target.value : parseFloat(e.target.value) ) }) }
+                        onBlur = { (e) => this.setState({ amount: parseFloat(e.target.value) || 0 }) }
                         onCurrencyChanged = { (e) => this.setState({ currency: e.target.value }) }
                     />
-                    <button disabled = { this.state.is_submitting } type='submit'>Submit</button>
+                    <br />
+                    <button disabled = { this.state.is_submitting } className="btn btn-primary mb-3" type='submit'>Submit</button>
+                    { this.state.submit_success &&
+                        <div className="alert alert-success" role="alert">
+                            <h4>Deposit Request Submitted!</h4>
+                            <p>Waiting for admin approval</p>
+                            <p>Request Time  : {this.state.submit_success.made_on}</p>
+                            <p>Transaction Id: {this.state.submit_success.transaction_id}</p>
+                            <p>Amount        : {this.state.submit_success.amount} IDR</p>
+                        </div>
+                    }
                 </form>
-            </React.Fragment>
+            </div>
         );
     }
 
@@ -68,9 +80,16 @@ class Deposit extends Component {
             });
     
             if(res.status == 200){
-                const parsedRes = await res.text();
-                alert(`Deposit Request Submitted!\nWaiting for admin approval`);
+                const parsedRes = await res.json();
+                const submit_success= {
+                    transaction_id: parsedRes.transactionId,
+                    made_on: parsedRes.transaction.made_on.replace('T', ' ').replace('Z', ''),
+                    amount: parsedRes.transaction.amount
+                }
+                this.setState({ submit_success });
+                //alert(`Deposit Request Submitted!\nWaiting for admin approval`);
             } else{
+                this.setState({ submit_success: null })
                 alert(await res.text());
             }
         }

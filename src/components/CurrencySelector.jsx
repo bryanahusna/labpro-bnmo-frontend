@@ -2,9 +2,14 @@ import React, { Component } from 'react';
 
 class CurrencySelector extends Component {
     state = {  } 
-    render() { 
+    render() {
+
         return (
-            <select id={ this.props.id } name={ this.props.name } value={ this.props.value } onChange={ this.props.onChange }>
+            <select id={ this.props.id } name={ this.props.name }
+                value={ this.props.value }
+                onChange={ this.props.onChange }
+                className='form-select'
+            >
                 <option value="AFN">AFN - Afghan Afghani</option>
                 <option value="ALL">ALL - Albanian Lek</option>
                 <option value="DZD">DZD - Algerian Dinar</option>
@@ -61,7 +66,6 @@ class CurrencySelector extends Component {
                 <option value="FJD">FJD - Fijian Dollar</option>
                 <option value="GMD">GMD - Gambian Dalasi</option>
                 <option value="GEL">GEL - Georgian Lari</option>
-                <option value="DEM">DEM - German Mark</option>
                 <option value="GHS">GHS - Ghanaian Cedi</option>
                 <option value="GIP">GIP - Gibraltar Pound</option>
                 <option value="GRD">GRD - Greek Drachma</option>
