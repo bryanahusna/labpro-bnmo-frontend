@@ -9,36 +9,37 @@ class Register extends Component {
      } 
     render() { 
         return (
-            <main className="form-signin w-100 m-auto">
-            <form onSubmit={ this.handleSubmit }>
-                <h1 className="h3 mb-3 fw-normal">Register</h1>
+            <div className='container'>
+                <main className="form-signin w-100 m-auto">
+                <form onSubmit={ this.handleSubmit }>
+                    <h1 className="h3 mb-3 fw-normal">Register</h1>
 
-                <div className="form-floating">
-                    <input type="text" value={ this.state.username } onChange={ (e) => this.handleUsernameInput(e) } className="form-control" id="floatingInput" placeholder="example" required />
-                    <label htmlFor="floatingInput">Username</label>
-                </div>
-                <div className="form-floating">
-                    <input type="password" value={ this.state.password } onChange={ (e) => this.handlePasswordInput(e) } className="form-control" id="floatingPassword" placeholder="Password" required />
-                    <label htmlFor="floatingPassword">Password</label>
-                </div>
-                <div className="form-floating">
-                    <input type="text" value={ this.state.name } onChange={ (e) => this.handleNameInput(e) } className="form-control" id="floatingName" placeholder="John" required />
-                    <label htmlFor="floatingName">Name</label>
-                </div>
-                <div className="form-floating">
-                    <input type="text" value={ this.state.foto_ktp } onChange={ (e) => this.handleFotoKTPInput(e) } className="form-control" id="floatingFotoKTP" placeholder="example.jpg" required />
-                    <label htmlFor="floatingFotoKTP">Foto KTP</label>
-                </div>
-
-                <button className="w-100 btn btn-lg btn-primary" type="submit">Register</button>
-            </form>
-            </main>
+                    <div className="form-floating">
+                        <input type="text" value={ this.state.username } onChange={ (e) => this.handleUsernameInput(e) } className="form-control" id="floatingInput" placeholder="example" required />
+                        <label htmlFor="floatingInput">Username</label>
+                    </div>
+                    <div className="form-floating">
+                        <input type="password" value={ this.state.password } onChange={ (e) => this.handlePasswordInput(e) } className="form-control" id="floatingPassword" placeholder="Password" required />
+                        <label htmlFor="floatingPassword">Password</label>
+                    </div>
+                    <div className="form-floating">
+                        <input type="text" value={ this.state.name } onChange={ (e) => this.handleNameInput(e) } className="form-control" id="floatingName" placeholder="John" required />
+                        <label htmlFor="floatingName">Name</label>
+                    </div>
+                    <div className="form-floating">
+                        <input type="text" value={ this.state.foto_ktp } onChange={ (e) => this.handleFotoKTPInput(e) } className="form-control" id="floatingFotoKTP" placeholder="example.jpg" required />
+                        <label htmlFor="floatingFotoKTP">Foto KTP</label>
+                    </div>
+                    <br />
+                    <button className="w-100 btn btn-lg btn-primary" type="submit">Register</button>
+                </form>
+                </main>
+            </div>
         );
     }
 
     handleSubmit = async (e) => {
         e.preventDefault();
-        //console.log(this.state);
         const res = await fetch('http://localhost:3001/api/register', {
             method: 'POST',
             headers: {

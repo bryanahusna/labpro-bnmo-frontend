@@ -9,22 +9,24 @@ class Login extends Component {
 
     render() { 
         return (
-            <main className="form-signin w-100 m-auto">
-            <form onSubmit={ this.handleSubmit }>
-                <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
+            <div className='container'>
+                <main className="form-signin w-100 m-auto">
+                <form onSubmit={ this.handleSubmit }>
+                    <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
 
-                <div className="form-floating">
-                    <input type="text" value={ this.state.username } onChange={ (e) => this.handleUsernameInput(e) } className="form-control" id="floatingInput" placeholder="example" />
-                    <label htmlFor="floatingInput">Username</label>
-                </div>
-                <div className="form-floating">
-                    <input type="password" value={ this.state.password } onChange={ (e) => this.handlePasswordInput(e) } className="form-control" id="floatingPassword" placeholder="Password" />
-                    <label htmlFor="floatingPassword">Password</label>
-                </div>
-
-                <button className="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-            </form>
-            </main>
+                    <div className="form-floating">
+                        <input type="text" value={ this.state.username } onChange={ (e) => this.handleUsernameInput(e) } className="form-control" id="floatingInput" placeholder="example" />
+                        <label htmlFor="floatingInput">Username</label>
+                    </div>
+                    <div className="form-floating">
+                        <input type="password" value={ this.state.password } onChange={ (e) => this.handlePasswordInput(e) } className="form-control" id="floatingPassword" placeholder="Password" />
+                        <label htmlFor="floatingPassword">Password</label>
+                    </div>
+                    <br/>
+                    <button className="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+                </form>
+                </main>
+            </div>
         );
     }
 
@@ -46,7 +48,7 @@ class Login extends Component {
             const user = await checkLoggedIn();
             localStorage.setItem('me', JSON.stringify(user));
             
-            alert(`Login successful\n: ${parsedRes}`);
+            alert(`Login successful`);
             window.open('/dashboard', '_self');
         } else{
             alert(await res.text());

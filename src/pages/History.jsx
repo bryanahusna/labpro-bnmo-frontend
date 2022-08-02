@@ -15,15 +15,12 @@ class History extends Component {
 
     render() { 
         return (
-            <React.Fragment>
+            <div className='container'>
                 <h1>History</h1>
                 { this.state.transactions.map(el =>
-                    <React.Fragment key={ el.id }>
-                        <HistoryEntry key={ el.id } transaction = { el } />
-                        <br/>
-                    </ React.Fragment>
+                    <HistoryEntry key={el.id} transaction = { el } />
                 )}
-            </React.Fragment>
+            </div>
         );
     }
 }

@@ -4,11 +4,16 @@ class Logout extends Component {
     state = {  } 
     render() { 
         return (
-        <React.Fragment>
-            <h1>Are you sure to log out?</h1>
-            <button onClick={ this.handleYes }>Yes</button>
-            <button onClick={ this.handleNo }>No</button>
-        </React.Fragment>
+        <div className='container'>
+            <div className='d-flex justify-content-center'>
+                <h1>Are you sure to log out?</h1>
+            </div>
+            <br/>
+            <div className='d-flex align-items-center justify-content-center'>
+                <button className='btn btn-primary me-3 px-3' onClick={ this.handleYes }>Yes</button>
+                <button className='btn btn-secondary px-3' onClick={ this.handleNo }>No</button>
+            </div>
+        </div>
     );
     }
 

@@ -7,10 +7,11 @@ class UnverifiedUser extends Component {
 
     render() { 
         return (
-            <div>
-                <h1>{ this.props.user.username }</h1>
-                <button onClick={ this.handleVerify } disabled={ this.state.is_submitting }>Verify</button>
-                <button onClick={ this.handleRemove } disabled={ this.state.is_submitting }>Remove</button>
+            <div className='p-3 bg-body rounded shadow-sm border'>
+                <h5>Username: { this.props.user.username }</h5>
+                <h5>Name: { this.props.user.name }</h5>
+                <button className='btn btn-primary me-3' onClick={ this.handleVerify } disabled={ this.state.is_submitting }>Verify</button>
+                <button className='btn btn-secondary' onClick={ this.handleRemove } disabled={ this.state.is_submitting }>Remove</button>
             </div>
         );
     }

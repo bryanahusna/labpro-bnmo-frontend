@@ -68,7 +68,6 @@ class CurrencySelector extends Component {
                 <option value="GEL">GEL - Georgian Lari</option>
                 <option value="GHS">GHS - Ghanaian Cedi</option>
                 <option value="GIP">GIP - Gibraltar Pound</option>
-                <option value="GRD">GRD - Greek Drachma</option>
                 <option value="GTQ">GTQ - Guatemalan Quetzal</option>
                 <option value="GNF">GNF - Guinean Franc</option>
                 <option value="GYD">GYD - Guyanaese Dollar</option>

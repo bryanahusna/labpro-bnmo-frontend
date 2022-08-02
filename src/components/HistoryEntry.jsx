@@ -7,18 +7,19 @@ class HistoryEntry extends Component {
         const transaction = this.props.transaction;
 
         return (
-        <div>
-            <h4>Id: { transaction.id }</h4>
-            <h4>Type: { transaction.type }</h4>
-            <h4>Amount: { transaction.amount }</h4>
-            <h4>Username: { transaction.user.username }</h4>
-            { (transaction.type == TransactionType.Transfer) && <h4>Transfer Destination: { transaction.transfer.to_user }</h4> }
-            <h4>Date: { transaction.made_on }</h4>
-            { (transaction.type == TransactionType.Deposit) && <h4>Approved: { transaction.deposit.is_approved + '' }</h4> }
-            { (transaction.type == TransactionType.Withdrawal) && <h4>Approved: { transaction.withdrawal.is_approved + '' }</h4> }
-            { (transaction.type == TransactionType.Deposit) && transaction.deposit.is_approved && <h4>Approved On: { transaction.deposit.approved_on }</h4> }
-            { (transaction.type == TransactionType.Withdrawal) && transaction.withdrawal.is_approved && <h4>Approved On: { transaction.withdrawal.approved_on }</h4> }
-        </div>
+            <div className='p-3 bg-body rounded shadow-sm border'>
+                <strong className="d-block">{ transaction.type }</strong>
+                Id: { transaction.id }<br/>
+                Type: { transaction.type }<br/>
+                Amount: { transaction.amount } IDR<br/>
+                Username: { transaction.user.username }<br/>
+                { (transaction.type == TransactionType.Transfer) && <>Transfer Destination: { transaction.transfer.to_user.username }<br/></> }
+                Date: { transaction.made_on }<br/>
+                { (transaction.type == TransactionType.Deposit) && <>Approved: { transaction.deposit.is_approved + '' }<br/></> }
+                { (transaction.type == TransactionType.Withdrawal) && <>Approved: { transaction.withdrawal.is_approved + '' }<br/></> }
+                { (transaction.type == TransactionType.Deposit) && transaction.deposit.is_approved && <>Approved On: { transaction.deposit.approved_on }<br/></> }
+                { (transaction.type == TransactionType.Withdrawal) && transaction.withdrawal.is_approved && <>Approved On: { transaction.withdrawal.approved_on }</> }
+            </div>
         );
     }
 }

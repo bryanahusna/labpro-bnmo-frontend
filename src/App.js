@@ -16,6 +16,7 @@ import History from './pages/History';
 import Logout from './pages/Logout';
 import Approve from './pages/Approve';
 import Verify from './pages/Verify';
+import Profile from './pages/Profile';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
           <Route path='verify' element={ <Verify /> } />
           <Route path='transfer' element={ <Transfer /> } />
           <Route path='history' element={ <History /> } />
+          <Route path='profile' element={ <Profile /> } />
           <Route path='logout' element={ <Logout /> } />
         </Route>
       </Routes>

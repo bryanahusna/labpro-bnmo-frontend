@@ -13,7 +13,8 @@ class Amount extends Component {
                         onChange={ this.props.onAmountChanged }
                         onBlur={ this.props.onBlur }
                         type="text" pattern='[0-9]+(\.[0-9]*)?' min="0"
-                        className='form-control ms-2 me-3'
+                        className='form-control'
+                        title='Transaction amount, cannot be empty'
                     />
                     <CurrencySelector id='currency' value={ this.props.currency } onChange={ this.props.onCurrencyChanged } />
                 </div>

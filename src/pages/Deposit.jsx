@@ -71,7 +71,6 @@ class Deposit extends Component {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
-                    // 'Content-Type': 'application/x-www-form-urlencoded',
                 },
                 credentials: 'include',
                 body: JSON.stringify({
@@ -87,7 +86,6 @@ class Deposit extends Component {
                     amount: parsedRes.transaction.amount
                 }
                 this.setState({ submit_success });
-                //alert(`Deposit Request Submitted!\nWaiting for admin approval`);
             } else{
                 this.setState({ submit_success: null })
                 alert(await res.text());

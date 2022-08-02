@@ -26,7 +26,8 @@ class Verify extends Component {
         if(!this.state.is_admin) return <h1>Only accessible to admin</h1>
 
         return (
-            <React.Fragment>
+            <div className='container'>
+                <h1>Verify</h1>
                 { this.state.users.map(el => {
                     return (
                         <React.Fragment key={ el.username }>
@@ -38,7 +39,7 @@ class Verify extends Component {
                         </React.Fragment>
                     )
                 })}
-            </React.Fragment>
+            </div>
         );
     }
 

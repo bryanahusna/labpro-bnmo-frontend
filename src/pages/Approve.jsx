@@ -27,7 +27,7 @@ class Approve extends Component {
         if(!this.state.is_admin) return <h1>Only accessible to admin</ h1>;
 
         return (
-            <React.Fragment>
+            <div className='container'>
                 <h1>Approve</h1>
                 { this.state.transactions.map(el =>
                     <React.Fragment key={ el.id }>
@@ -39,7 +39,7 @@ class Approve extends Component {
                         <br />
                     </ React.Fragment>)
                 }
-            </React.Fragment>
+            </div>
         );
     }
 
