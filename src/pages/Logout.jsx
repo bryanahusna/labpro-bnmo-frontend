@@ -25,14 +25,14 @@ class Logout extends Component {
         });
         if(res.status == 200){
             alert('Logout successful');
-            return window.open('/', '_self');
+            return window.open(`${process.env.PUBLIC_URL}/`, '_self');
         } else{
             alert('Login failed! Try again');
         }
     }
 
     handleNo = () => {
-        window.open('/dashboard', '_self');
+        window.open(`${process.env.PUBLIC_URL}/dashboard`, '_self');
     }
 }
  

@@ -50,7 +50,7 @@ class Login extends Component {
             //localStorage.setItem('me', JSON.stringify(user));
             
             alert(`Login successful`);
-            window.open('/dashboard', '_self');
+            window.open(`${process.env.PUBLIC_URL}/dashboard`, '_self');
         } else{
             alert(await res.text());
         }

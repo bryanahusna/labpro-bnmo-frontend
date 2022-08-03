@@ -1,4 +1,5 @@
 import logo from './logo.svg';
+import { createBrowserHistory } from 'history';
 import './App.css';
 import React from 'react';
 import Login from './pages/Login';
@@ -22,35 +23,31 @@ import Footer from './pages/Footer';
 
 function App() {
   return (
-    <React.Fragment>
-      <div style={{minHeight: '73vh' }}>
-        <BrowserRouter>
-          <Routes>
-            <Route path='/' element={<Navbar />}>
-              <Route index element={ <Home /> } />
-              <Route path='register' element={ <Register /> } />
-              <Route path='login' element={ <Login /> } />
-              <Route path='registration-successful' element={ <RegistrationSuccess /> } />
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <Navbar />
+        <Routes>
+          <Route exact path='/' element={<Home />} />
+          <Route path='/register' element={ <Register /> } />
+          <Route path='/login' element={ <Login /> } />
+          <Route path='/registration-successful' element={ <RegistrationSuccess /> } />
 
-              <Route path='dashboard' element={ <Dashboard /> } />
-              <Route path='deposit' element={ <Deposit /> } />
-              <Route path='withdraw' element={ <Withdraw /> } />
-              <Route path='approve' element={ <Approve /> } />
-              <Route path='verify' element={ <Verify /> } />
-              <Route path='transfer' element={ <Transfer /> } />
-              <Route path='history' element={ <History /> } />
-              <Route path='profile' element={ <Profile /> } />
-              <Route path='search-customer' element={ <SearchCustomer /> } />
-              <Route path='logout' element={ <Logout /> } />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-
-      </div>
-
+          <Route path='/dashboard' element={ <Dashboard /> } />
+          <Route path='/deposit' element={ <Deposit /> } />
+          <Route path='/withdraw' element={ <Withdraw /> } />
+          <Route path='/approve' element={ <Approve /> } />
+          <Route path='/verify' element={ <Verify /> } />
+          <Route path='/transfer' element={ <Transfer /> } />
+          <Route path='/history' element={ <History /> } />
+          <Route path='/profile' element={ <Profile /> } />
+          <Route path='/search-customer' element={ <SearchCustomer /> } />
+          <Route path='/logout' element={ <Logout /> } />
+        </Routes>
       <Footer />
-    </React.Fragment>
+    </BrowserRouter>
   );
 }
 
 export default App;
+export const history = createBrowserHistory({
+  basename: process.env.PUBLIC_URL
+});

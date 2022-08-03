@@ -10,6 +10,7 @@ class Navbar extends Component {
   }
 
   async componentDidMount(){
+    console.log(process.env.PUBLIC_URL);
     const res = await fetch(`${backendHost}/api/me`, { credentials: 'include' });
     if(res.status == 200){
       this.setState({ user: await res.json(), is_logged_in: true });
@@ -53,10 +54,10 @@ class Navbar extends Component {
                     </Link>
                   </li>
                   <li>
-                    <a href="/profile" className="nav-link text-white">
+                    <Link to="/profile" className="nav-link text-white">
                       <svg className="bi d-block mx-auto mb-1" width="24" height="24"><use xlinkHref="#people-circle"/></svg>
                       Profile
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -66,7 +67,7 @@ class Navbar extends Component {
             <div className="container d-flex flex-wrap flex-column-reverse">
               { (this.state.is_logged_in == false) &&
                 <div className="text-end">
-                  <Link to="/login" className="btn btn-light text-dark me-2">Login</Link>
+                  <Link to="./login" className="btn btn-light text-dark me-2">Login</Link>
                   <Link to="/register" className="btn btn-primary">Register</Link>
                 </div>
               }

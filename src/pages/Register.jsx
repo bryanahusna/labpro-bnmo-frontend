@@ -51,7 +51,7 @@ class Register extends Component {
         if(res.status == 200){
             const parsedRes = await res.json();
             //alert('Registration Successful!');
-            window.open('/registration-successful', '_self');
+            window.open(`${process.env.PUBLIC_URL}/registration-successful`, '_self');
         } else{
             alert(await res.text());
         }

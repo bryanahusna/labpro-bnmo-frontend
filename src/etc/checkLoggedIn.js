@@ -5,11 +5,11 @@ export default async function checkLoggedIn(){
         const res = await fetch(`${backendHost}/api/me`, { credentials: 'include' });
         if(res.status == 404){
             //alert('Your username was not found! Sign in again');
-            window.open('/login', '_self');
+            window.open(`${process.env.PUBLIC_URL}/login`, '_self');
             return {};
         }
         if(res.status != 200){
-            window.open('/login', '_self');
+            window.open(`${process.env.PUBLIC_URL}/login`, '_self');
             return {};
         }
         return res.json();
