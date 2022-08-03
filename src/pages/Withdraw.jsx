@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Amount from '../components/Amount';
+import { backendHost } from '../config';
 import checkLoggedIn from '../etc/checkLoggedIn';
 
 class Withdraw extends Component {
@@ -61,13 +62,13 @@ class Withdraw extends Component {
         if(this.state.is_submitting) return;
         this.setState({ is_submitting: true });
 
-        const resRate = await fetch(`http://localhost:3001/api/ext/currency/rate?from=${this.state.currency}`, { credentials: 'include' });
+        const resRate = await fetch(`${backendHost}/api/ext/currency/rate?from=${this.state.currency}`, { credentials: 'include' });
         if(resRate.status != 200){
             alert('Invalid currency!');
         } else{
             const rate = parseFloat(await resRate.text());
     
-            const res = await fetch('http://localhost:3001/api/withdraw', {
+            const res = await fetch(`${backendHost}/api/withdraw`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -96,7 +97,7 @@ class Withdraw extends Component {
     }
     
     updateRate = async () => {
-        const res = await fetch(`http://localhost:3001/api/ext/currency/rate?from=${this.state.currency}`, { credentials: 'include' });
+        const res = await fetch(`${backendHost}/api/ext/currency/rate?from=${this.state.currency}`, { credentials: 'include' });
         if(res.status == 200){
             this.setState({ rate: parseFloat(await res.text()) });
         } else{

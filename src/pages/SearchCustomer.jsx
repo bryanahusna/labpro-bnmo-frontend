@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import UserProfile from '../components/UserProfile';
+import { backendHost } from '../config';
 import checkLoggedIn from '../etc/checkLoggedIn';
 
 class SearchCustomer extends Component {
@@ -38,7 +39,7 @@ class SearchCustomer extends Component {
     handleSubmit = async (e) => {
         e.preventDefault(); 
 
-        const res = await fetch(`http://localhost:3001/api/users/${this.state.search_username}`, { credentials: 'include' });
+        const res = await fetch(`${backendHost}/api/users/${this.state.search_username}`, { credentials: 'include' });
         if(res.status == 200){
             const users = await res.json();
             this.setState({ found_users: users });

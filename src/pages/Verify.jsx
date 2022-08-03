@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import UnverifiedUser from '../components/UnverifiedUser';
+import { backendHost } from '../config';
 import checkLoggedIn from '../etc/checkLoggedIn';
 
 class Verify extends Component {
@@ -13,7 +14,7 @@ class Verify extends Component {
 
         if(!this.state.is_admin) return;
 
-        const res = await fetch('http://localhost:3001/api/users?is_verified=false', { credentials: 'include' });
+        const res = await fetch(`${backendHost}/api/users?is_verified=false`, { credentials: 'include' });
         if(res.status == 200){
             const users = await res.json();
             this.setState({ users: users });
@@ -44,7 +45,7 @@ class Verify extends Component {
     }
 
     handleVerify = async (user) => {
-        const res = await fetch('http://localhost:3001/api/verify', {
+        const res = await fetch(`${backendHost}/api/verify`, {
             method: 'POST',
             credentials: 'include',
             headers: {
@@ -60,7 +61,7 @@ class Verify extends Component {
         }
     }
     handleRemove = async (user) => {
-        const res = await fetch('http://localhost:3001/api/verify', {
+        const res = await fetch(`${backendHost}/api/verify`, {
             method: 'POST',
             credentials: 'include',
             headers: {

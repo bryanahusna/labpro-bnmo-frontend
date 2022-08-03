@@ -1,5 +1,6 @@
 {
   "name": "labpro-bnmo-frontend",
+  "homepage": "https://bryan.padzcraft.xyz/labpro-bnmo",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

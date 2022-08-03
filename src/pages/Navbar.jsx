@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Outlet, Link } from 'react-router-dom';
+import { backendHost } from '../config';
 import layoutcss from './css/layout.css';
 
 class Navbar extends Component {
@@ -9,7 +10,7 @@ class Navbar extends Component {
   }
 
   async componentDidMount(){
-    const res = await fetch(`http://localhost:3001/api/me`, { credentials: 'include' });
+    const res = await fetch(`${backendHost}/api/me`, { credentials: 'include' });
     if(res.status == 200){
       this.setState({ user: await res.json(), is_logged_in: true });
     } else{

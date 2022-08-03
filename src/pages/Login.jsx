@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { backendHost } from '../config';
 import checkLoggedIn from '../etc/checkLoggedIn';
 
 class Login extends Component {
@@ -33,7 +34,7 @@ class Login extends Component {
     handleSubmit = async (e) => {
         e.preventDefault();
         
-        const res = await fetch('http://localhost:3001/api/login', {
+        const res = await fetch(`${backendHost}/api/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -45,8 +46,8 @@ class Login extends Component {
         if(res.status == 200){
             const parsedRes = await res.text();
 
-            const user = await checkLoggedIn();
-            localStorage.setItem('me', JSON.stringify(user));
+            //const user = await checkLoggedIn();
+            //localStorage.setItem('me', JSON.stringify(user));
             
             alert(`Login successful`);
             window.open('/dashboard', '_self');

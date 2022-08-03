@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { backendHost } from '../config';
 
 class Logout extends Component {
     state = {  } 
@@ -18,7 +19,7 @@ class Logout extends Component {
     }
 
     handleYes = async () => {
-        const res = await fetch('http://localhost:3001/api/logout', {
+        const res = await fetch(`${backendHost}/api/logout`, {
             method: 'DELETE',
             credentials: 'include'
         });

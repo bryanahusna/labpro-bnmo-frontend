@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import HistoryUnapproved from '../components/HistoryUnapproved';
+import { backendHost } from '../config';
 import checkLoggedIn from '../etc/checkLoggedIn';
 
 class Approve extends Component {
@@ -14,7 +15,7 @@ class Approve extends Component {
 
         if(!this.state.is_admin) return;
 
-        const res = await fetch('http://localhost:3001/api/history/unapproved', { credentials: 'include' });
+        const res = await fetch(`${backendHost}/api/history/unapproved`, { credentials: 'include' });
         if(res.status == 200){
             const transactions = await res.json();
             this.setState({ transactions });
@@ -44,7 +45,7 @@ class Approve extends Component {
     }
 
     handleApprove = async (transaction) => {
-        const res = await fetch('http://localhost:3001/api/approve', {
+        const res = await fetch(`${backendHost}/api/approve`, {
             method: 'POST',
             credentials: 'include',
             headers: {
@@ -62,7 +63,7 @@ class Approve extends Component {
     }
 
     handleDecline = async (transaction) => {
-        const res = await fetch('http://localhost:3001/api/approve', {
+        const res = await fetch(`${backendHost}/api/approve`, {
             method: 'POST',
             credentials: 'include',
             headers: {

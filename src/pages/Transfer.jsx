@@ -1,6 +1,7 @@
 import { Modal } from 'bootstrap';
 import React, { Component } from 'react';
 import Amount from '../components/Amount';
+import { backendHost } from '../config';
 import checkLoggedIn from '../etc/checkLoggedIn';
 
 class Transfer extends Component {
@@ -81,7 +82,7 @@ class Transfer extends Component {
 
         // check target username
         try{
-            const resToUser = await fetch(`http://localhost:3001/api/users/${this.state.to_username}`, { credentials: 'include' });
+            const resToUser = await fetch(`${backendHost}/api/users/${this.state.to_username}`, { credentials: 'include' });
             if(resToUser.status != 200){
                 throw new Error(await res.text());
             }
@@ -113,7 +114,7 @@ class Transfer extends Component {
     handleConfirm = async () => {
         this.setState({ is_submitting: true, submit_success: false });
         try{
-            const res = await fetch('http://localhost:3001/api/transfer', {
+            const res = await fetch(`${backendHost}/api/transfer`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -165,7 +166,7 @@ class Transfer extends Component {
     }
     
     updateRate = async () => {
-        const res = await fetch(`http://localhost:3001/api/ext/currency/rate?from=${this.state.currency}`, { credentials: 'include' });
+        const res = await fetch(`${backendHost}/api/ext/currency/rate?from=${this.state.currency}`, { credentials: 'include' });
         if(res.status == 200){
             this.setState({ rate: parseFloat(await res.text()) });
         } else{

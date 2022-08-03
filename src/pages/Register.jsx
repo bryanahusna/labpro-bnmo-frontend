@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { backendHost } from '../config';
 
 class Register extends Component {
     state = { 
@@ -40,7 +41,7 @@ class Register extends Component {
 
     handleSubmit = async (e) => {
         e.preventDefault();
-        const res = await fetch('http://localhost:3001/api/register', {
+        const res = await fetch(`${backendHost}/api/register`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import HistoryEntry from '../components/HistoryEntry';
 import Pagination from '../components/Pagination';
+import { backendHost } from '../config';
 
 class History extends Component {
     state = {
@@ -11,11 +12,11 @@ class History extends Component {
     }
 
     async componentDidMount(){
-        const resCount = await fetch('http://localhost:3001/api/history/count', { credentials: 'include' });
+        const resCount = await fetch(`${backendHost}/api/history/count`, { credentials: 'include' });
         const countObj = await resCount.json();
         this.setState({ count: countObj.count });
 
-        const res = await fetch(`http://localhost:3001/api/history?page=${this.state.page}&pageSize=${this.state.pageSize}`, { credentials: 'include' });
+        const res = await fetch(`${backendHost}/api/history?page=${this.state.page}&pageSize=${this.state.pageSize}`, { credentials: 'include' });
         if(res.status == 200){
             this.setState({ transactions: await res.json() });
         } else{
@@ -25,7 +26,7 @@ class History extends Component {
 
     async componentDidUpdate(prevProps, prevState){
         if(this.state.page != prevState.page){
-            const res = await fetch(`http://localhost:3001/api/history?page=${this.state.page}&pageSize=${this.state.pageSize}`, { credentials: 'include' });
+            const res = await fetch(`${backendHost}/api/history?page=${this.state.page}&pageSize=${this.state.pageSize}`, { credentials: 'include' });
             if(res.status == 200){
                 this.setState({ transactions: await res.json() });
             } else{
