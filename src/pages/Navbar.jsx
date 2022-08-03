@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import layoutcss from './css/layout.css';
 
-class Layout extends Component {
+class Navbar extends Component {
   state = {
     user: {},
     is_logged_in: undefined
@@ -84,4 +84,4 @@ class Layout extends Component {
   }
 };
   
-export default Layout;
+export default Navbar;

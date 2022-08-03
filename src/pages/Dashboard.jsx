@@ -44,6 +44,9 @@ class Dashboard extends Component {
                         <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
                         <path d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.235.235 0 0 1 .02-.022z"/>
                     </symbol>
+                    <symbol id="search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                    </symbol>
                 </svg>
 
                 { !user.is_admin && 
@@ -110,6 +113,13 @@ class Dashboard extends Component {
                     <div>
                         <h4 className="fw-bold mb-0">Verify User</h4>
                         <p>Verify unverified users</p>
+                    </div>
+                </Link>
+                <Link to="/search-customer" className="col d-flex align-items-start text-dark text-decoration-none">
+                    <svg className="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlinkHref="#search"/></svg>
+                    <div>
+                        <h4 className="fw-bold mb-0">Search Customer</h4>
+                        <p>Find user's profile</p>
                     </div>
                 </Link>
                 <Link to="/history" className="col d-flex align-items-start text-dark text-decoration-none">

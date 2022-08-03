@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import UserProfile from '../components/UserProfile';
 import checkLoggedIn from '../etc/checkLoggedIn';
 
 class Profile extends Component {
@@ -19,11 +20,7 @@ class Profile extends Component {
         return (
             <div className='container'>
                 <h1>Profile</h1>
-                Username: {this.state.user.username}<br/>
-                Name: {this.state.user.name}<br/>
-                Balance: {this.state.user.balance}<br/>
-                Verified?: {this.state.user.is_verified ? 'yes' : 'no'}<br/>
-                Foto KTP: {this.state.user.foto_ktp}<br/>
+                <UserProfile user={this.state.user} />
             </div>
         );
     }
